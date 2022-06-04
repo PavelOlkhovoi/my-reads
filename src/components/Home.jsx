@@ -4,7 +4,7 @@ import Categories from "./Categories.jsx";
 const Home = ()=> {
 
     return (
-        <div>
+        <div className="App">
             <Search />
             <h1>Главный предок</h1>
             <Categories />
