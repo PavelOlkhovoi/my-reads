@@ -5,10 +5,16 @@ const Home = ()=> {
 
     return (
         <div className="App">
-            <Search />
-            <h1>Главный предок</h1>
-            <Categories />
-            <AddBook/>
+            <div className="list-books">
+                <Search />
+                <div className="list-books-title">
+                    <h1>MyReads</h1>
+                </div>
+                <div className="list-books-content">
+                    <Categories />
+                    <AddBook/>
+                </div>
+            </div>
         </div>
     )
 }
