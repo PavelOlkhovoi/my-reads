@@ -1,6 +1,6 @@
 import Search from "./Search.jsx";
 import Categories from "./Categories.jsx";
-
+import AddBook from "./AddBook.jsx";
 const Home = ()=> {
 
     return (
@@ -8,6 +8,7 @@ const Home = ()=> {
             <Search />
             <h1>Главный предок</h1>
             <Categories />
+            <AddBook/>
         </div>
     )
 }
