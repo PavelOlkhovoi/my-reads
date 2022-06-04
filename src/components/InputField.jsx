@@ -1,6 +1,11 @@
 const InputField = ()=> {
     return (
-        <input type="text" placeholder="Type a book's name" />
+        <div className="search-books-input-wrapper">
+        <input
+          type="text"
+          placeholder="Search by title, author, or ISBN"
+        />
+      </div>
     )
 }
 

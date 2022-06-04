@@ -2,10 +2,19 @@ import InputField from "./InputField";
 
 const Search = () => {
     return (
-        <div>
-            <h1>Search</h1>
-            <InputField />
+    <div className="search-books">
+        <div className="search-books-bar">
+        <a
+            className="close-search"
+        >
+            Close
+        </a>
+        <InputField/>
         </div>
+        <div className="search-books-results">
+        <ol className="books-grid"></ol>
+        </div>
+    </div>
     )
 }
 
