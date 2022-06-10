@@ -6,21 +6,24 @@ import Home from "./components/Home.jsx";
 
 function App() {
   const [books, setBooks] = useState([])
+  
+  const getAllBooks = useCallback( async () => {
+    const data = await getAll();
+    console.log('It is a fantastik gay')
+    setBooks(data)
+  }, [])
 
   useEffect(()=> {
-    const getAllBooks = async () => {
-      const data = await getAll();
-      setBooks(data)
-    };
-
+    console.log('Fierst hook')
     getAllBooks();
-  }, [])
+  }, [getAllBooks])
+
+  console.log("I without hook", books)
 
   const test = async() => {
     console.log("Start", books)
-    const newBook = await update({id: "jAUODAAAQBAJ"}, "read");
-    const newBooook = await getAll();
-    setBooks(newBook);
+    await update({id: "jAUODAAAQBAJ"}, "read");
+    getAllBooks();
     console.log("Dan", books)
   }
 
