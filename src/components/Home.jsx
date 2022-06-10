@@ -1,7 +1,8 @@
 import Search from "./Search.jsx";
 import Shelves from "./Shelves.jsx";
 import AddBook from "./AddBook.jsx";
-const Home = ()=> {
+const Home = ({books})=> {
+    console.log(books)
 
     return (
         <div className="App">
