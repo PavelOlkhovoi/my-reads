@@ -1,7 +1,7 @@
 const AddBook = () => {
     return (
         <div className="open-search">
-        <a>Add a book</a>
+        <a href="/#">Add a book</a>
       </div>
     )
 }

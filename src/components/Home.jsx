@@ -1,5 +1,5 @@
 import Search from "./Search.jsx";
-import Categories from "./Categories.jsx";
+import Shelves from "./Shelves.jsx";
 import AddBook from "./AddBook.jsx";
 const Home = ()=> {
 
@@ -11,7 +11,7 @@ const Home = ()=> {
                     <h1>MyReads</h1>
                 </div>
                 <div className="list-books-content">
-                    <Categories />
+                    <Shelves />
                     <AddBook/>
                 </div>
             </div>

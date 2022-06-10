@@ -4,7 +4,7 @@ const Search = () => {
     return (
     <div className="search-books">
         <div className="search-books-bar">
-        <a
+        <a href="/#"
             className="close-search"
         >
             Close
