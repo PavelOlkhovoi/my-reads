@@ -12,7 +12,7 @@ const Book = ({ book, bookUpdate }) => {
                 'url("http://books.google.com/books/content?id=yDtCuFHXbAYC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72RRiTR6U5OUg3IY_LpHTL2NztVWAuZYNFE8dUuC0VlYabeyegLzpAnDPeWxE6RHi0C2ehrR9Gv20LH2dtjpbcUcs8YnH5VCCAH0Y2ICaKOTvrZTCObQbsfp4UbDqQyGISCZfGN&source=gbs_api")',
             }}
           ></div>
-        <ChangeCategory bookUpdate={bookUpdate} />
+        <ChangeCategory bookUpdate={bookUpdate} book={book} />
 
         </div>
         <div className="book-title">{book.title}</div>

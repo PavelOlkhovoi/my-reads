@@ -18,14 +18,14 @@ function App() {
     getAllBooks();
   }, [getAllBooks])
 
-  const bookUpdate = async() => {
-    await update({id: "jAUODAAAQBAJ"}, "read");
+  const bookUpdate = async(book, shelf) => {
+    await update(book, shelf);
     getAllBooks();
   }
 
   return (
     <div>
-        <Home books={books}>
+        <Home books={books} bookUpdate={bookUpdate}>
         </Home>
         <button onClick={bookUpdate}>New data setUp</button>
     </div>
