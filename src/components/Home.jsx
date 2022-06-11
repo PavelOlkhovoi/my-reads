@@ -1,9 +1,7 @@
 import Search from "./Search.jsx";
 import Shelves from "./Shelves.jsx";
 import AddBook from "./AddBook.jsx";
-const Home = ({books})=> {
-    console.log(books)
-
+const Home = ({books, bookUpdate})=> {
     return (
         <div className="App">
             <div className="list-books">
@@ -12,7 +10,7 @@ const Home = ({books})=> {
                     <h1>MyReads</h1>
                 </div>
                 <div className="list-books-content">
-                    <Shelves />
+                    <Shelves books={books} bookUpdate={bookUpdate}/>
                     <AddBook/>
                 </div>
             </div>

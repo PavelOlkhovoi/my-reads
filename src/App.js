@@ -18,20 +18,16 @@ function App() {
     getAllBooks();
   }, [getAllBooks])
 
-  console.log("I without hook", books)
-
-  const test = async() => {
-    console.log("Start", books)
+  const bookUpdate = async() => {
     await update({id: "jAUODAAAQBAJ"}, "read");
     getAllBooks();
-    console.log("Dan", books)
   }
 
   return (
     <div>
-        <Home>
+        <Home books={books}>
         </Home>
-        <button onClick={test}>New data setUp</button>
+        <button onClick={bookUpdate}>New data setUp</button>
     </div>
   );
 }
