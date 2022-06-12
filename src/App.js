@@ -28,7 +28,6 @@ function App() {
     <div>
         <Home books={books} bookUpdate={bookUpdate}>
         </Home>
-        <button onClick={bookUpdate}>New data setUp</button>
     </div>
   );
 }

@@ -1,14 +1,15 @@
+import { Link } from "react-router-dom";
 import InputField from "./InputField";
 
 const Search = () => {
     return (
     <div className="search-books">
         <div className="search-books-bar">
-        <a href="/#"
+        <Link to="/"
             className="close-search"
         >
             Close
-        </a>
+        </Link>
         <InputField/>
         </div>
         <div className="search-books-results">
