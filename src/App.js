@@ -23,6 +23,7 @@ function App() {
     getAllBooks();
   }
 
+  console.log(books)
   return (
     <div>
         <Home books={books} bookUpdate={bookUpdate}>
