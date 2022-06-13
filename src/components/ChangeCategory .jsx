@@ -1,29 +1,50 @@
 import { useState } from "react";
 
-const ChangeCategory = ({book, bookUpdate}) => {
+const ChangeCategory = ({ book, bookUpdate }) => {
   // TODO: SOLVE BAG WITH MULTIPLE CLICKS
-  const [firstCLick, setFirstClick] = useState(0)
+  const [firstCLick, setFirstClick] = useState(false)
+  
   const shelfUpdate = (e) => {
     let shelf = e.target.value;
 
-    if(shelf !== book.shelf && firstCLick > 0){
-      bookUpdate(book, e.target.value)
-      return setFirstClick(0)
+    // Fierst click only shows shelves
+    if(firstCLick === false) {
+      setFirstClick(true);
+      return false
     }
 
-    setFirstClick( num => num + 1);
+    if(shelf !== book.shelf){
+      bookUpdate(book, shelf)
+      return setFirstClick(setFirstClick)
+    }
+
+    const checked = () => {
+      if(book.shelf === "read") {
+        return "selected"
+      }
+
+      if(book.shelf === "wantToRead") {
+        return "selected"
+      }
+
+      if(book.shelf === "currentlyReading") {
+        return "selected"
+      }
+    }
+
+ 
   }
     return (
         <div className="book-shelf-changer">
-        <select onClick={shelfUpdate}>
+        <select value={book.shelf} onClick={shelfUpdate}>
           <option value="none" disabled>
             Move to...
           </option>
-          <option value="currentlyReading">
+          <option value="currentlyReading" checked={book.shelf === "currentlyReading" ? "selected" : ""}>
             Currently Reading
           </option>
           <option value="wantToRead">Want to Read</option>
-          <option value="read">Read</option>
+          <option value="read" >Read</option>
           <option value="none">None</option>
         </select>
       </div>
