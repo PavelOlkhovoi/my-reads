@@ -1,5 +1,6 @@
 import ChangeCategory from "./ChangeCategory ";
-const Book = ({ book, bookUpdate }) => {
+const Book = ({ book, bookUpdate, addNewBook, place, books }) => {
+
     return (
         <div className="book">
         <div className="book-top">
@@ -12,8 +13,8 @@ const Book = ({ book, bookUpdate }) => {
                 `url(${book.imageLinks.thumbnail})`,
             }}
           ></div>
-        <ChangeCategory bookUpdate={bookUpdate} book={book} />
 
+        <ChangeCategory bookUpdate={bookUpdate} book={book} addNewBook={addNewBook} place={place} books={books}/>
         </div>
         <div className="book-title">{book.title}</div>
         <div className="book-authors">{book.authors}</div>

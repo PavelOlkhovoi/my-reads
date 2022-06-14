@@ -1,6 +1,6 @@
 import Book from "./Book";
 
-const Shelves = ({ books, bookUpdate }) => {
+const Shelves = ({ books, bookUpdate, addNewBook }) => {
     const shelves = ["wantToRead", "currentlyReading", "read"]
 
     return (
@@ -8,17 +8,18 @@ const Shelves = ({ books, bookUpdate }) => {
         <div className="bookshelf">
             {/* loop over the shelves */}
             {shelves.map((shelf, index) => (
-            <div key={index}>
-                <h2 className="bookshelf-title">{shelf}</h2>
-                <div className="bookshelf-books">
-                    <ol className="books-grid">
-                    {/* loop over the books */}
-                    {books.map((book) => (
-                        shelf === book.shelf ? <li key={book.id}><Book book={book} bookUpdate={bookUpdate}/></li> : ""
-                    ))}
-                    </ol>
+                <div key={index}>
+                    <h2 className="bookshelf-title">{shelf}</h2>
+                    <div className="bookshelf-books">
+                        <ol className="books-grid">
+                        {/* loop over the books */}
+                        { books.map((book) => (
+                            shelf === book.shelf ? <li key={book.id}><Book book={book} bookUpdate={bookUpdate} 
+                            addNewBook={addNewBook} place="shelf" books={books}/></li> : ""
+                        )) }
+                        </ol>
+                    </div>
                 </div>
-            </div>
             ))}
         </div>
     </div>

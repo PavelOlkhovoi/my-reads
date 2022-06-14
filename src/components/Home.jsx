@@ -1,7 +1,7 @@
 import Shelves from "./Shelves.jsx";
 import AddBook from "./AddBook.jsx";
 
-const Home = ({books, bookUpdate})=> {
+const Home = ({books, bookUpdate, addNewBook, additional})=> {
     return (
         <div className="App">
             <div className="list-books">
@@ -10,7 +10,7 @@ const Home = ({books, bookUpdate})=> {
                 </div>
                 <div className="list-books-content">
                     <Shelves books={books} bookUpdate={bookUpdate}/>
-                    <AddBook/>
+                    <AddBook />
                 </div>
             </div>
         </div>

@@ -1,34 +1,44 @@
 import { useState } from "react";
 
-const ChangeCategory = ({ book, bookUpdate }) => {
-  // TODO: SOLVE BAG WITH MULTIPLE CLICKS
-  const [firstCLick, setFirstClick] = useState(false)
-  
+const ChangeCategory = ({ book, bookUpdate, addNewBook, place, books }) => {
+
+  const [ firstCLick, setFirstClick ] = useState(false)
+
   const shelfUpdate = (e) => {
-    let shelf = e.target.value;
+    // The first click skip the first event
+    if( !firstCLick ) {
+      setFirstClick( true );
+      return false;
+    }else {
+      // Get the new shelf 
+      let shelf = e.target.value;
+      // If old and new shelves are different update the data
+      if( shelf !== book.shelf ){
+        // The book came from the Shelves component
+        if( place === "shelf") {
+          console.log("Update", shelf)
+          bookUpdate( book, shelf )
+        }else {
+          // The book came from the Search component
 
-    // Fierst click only shows shelves
-    if(firstCLick === false) {
-      setFirstClick(true);
-      return false
-    }
+          // Compare if the new book on a shelf
+          const compare = books.reduce((acc, item) => {
+              if(item.id === book.id){
+                return acc = false;
+              }
+              return acc;
+          }, true);
+        
+            // Avoid doubles 
+            if(compare) {
+            // Add the new shelf
+            book.shelf = shelf;
+            // Attach the book to common array of books
+            addNewBook( book )
+          }
+        }
 
-    if(shelf !== book.shelf){
-      bookUpdate(book, shelf)
-      return setFirstClick(setFirstClick)
-    }
-
-    const checked = () => {
-      if(book.shelf === "read") {
-        return "selected"
-      }
-
-      if(book.shelf === "wantToRead") {
-        return "selected"
-      }
-
-      if(book.shelf === "currentlyReading") {
-        return "selected"
+        return setFirstClick( false )
       }
     }
 
@@ -36,17 +46,15 @@ const ChangeCategory = ({ book, bookUpdate }) => {
   }
     return (
         <div className="book-shelf-changer">
-        <select value={book.shelf} onClick={shelfUpdate}>
-          <option value="none" disabled>
-            Move to...
-          </option>
-          <option value="currentlyReading" checked={book.shelf === "currentlyReading" ? "selected" : ""}>
-            Currently Reading
-          </option>
-          <option value="wantToRead">Want to Read</option>
-          <option value="read" >Read</option>
-          <option value="none">None</option>
-        </select>
+          <select defaultValue={ book.shelf !== undefined ? book.shelf : "none" } onClick={ shelfUpdate }>
+              <option disabled>
+                Move to...
+              </option>
+              <option value="currentlyReading">Currently Reading</option>
+              <option value="wantToRead">Want to Read</option>
+              <option value="read" >Read</option>
+              <option value="none">None</option>
+          </select>
       </div>
     )
 }

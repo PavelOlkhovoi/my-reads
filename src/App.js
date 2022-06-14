@@ -1,7 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
+import { Routes, Route} from "react-router-dom";
 import { getAll, update } from "./BooksAPI"
 import "./App.css";
 import Home from "./components/Home.jsx";
+import Search from "./components/Search";
 
 
 function App() {
@@ -9,8 +11,7 @@ function App() {
   
   const getAllBooks = useCallback( async () => {
     const data = await getAll();
-    console.log('It is a fantastik gay')
-    setBooks(data)
+    setBooks( data )
   }, [])
 
   useEffect(()=> {
@@ -23,11 +24,15 @@ function App() {
     getAllBooks();
   }
 
-  console.log(books)
+  const addNewBook = (newBook) => {
+    setBooks( prev => [...prev, newBook])
+  }
   return (
     <div>
-        <Home books={books} bookUpdate={bookUpdate}>
-        </Home>
+        <Routes>
+          <Route path="/" element={<Home books={books} bookUpdate={bookUpdate} addNewBook={addNewBook}/>} />
+          <Route path="/search" element={<Search books={books} bookUpdate={bookUpdate} addNewBook={addNewBook} place={"search"}/>} />
+        </Routes>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-const InputField = ({searchBooks})=> {
+const InputField = ({ searchBooks })=> {
     return (
         <div className="search-books-input-wrapper">
         <input

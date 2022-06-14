@@ -164,10 +164,6 @@ body,
   cursor: pointer;
 }
 
-.book-shelf-changer select option:checked {
-  background-color: #2e7c31;
-}
-
 /* book cover */
 
 .book-cover {
