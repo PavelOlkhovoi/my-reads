@@ -15,7 +15,6 @@ function App() {
   }, [])
 
   useEffect(()=> {
-    console.log('Fierst hook')
     getAllBooks();
   }, [getAllBooks])
 

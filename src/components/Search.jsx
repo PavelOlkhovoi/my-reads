@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import InputField from "./InputField";
 import { search } from "../BooksAPI"
 import Book from "./Book";
 
-const Search = ({ books, bookUpdate, addNewBook }) => {
+const Search = ({ books, addNewBook }) => {
     const [foundBooks, setFoundBooks] = useState([]);
 
     const debounce = ( cb, time ) => {
@@ -20,20 +20,22 @@ const Search = ({ books, bookUpdate, addNewBook }) => {
         let words = e.target.value;
         if( words === undefined || words === "" ){ return false } 
 
-        const getBooks = await search(words, 30)
-        console.log("Searched", getBooks)
+        const getBooks = await search( words, 4 )
 
-        if(!getBooks.error) {
-            console.log("Searched before maping", getBooks)
+        if( !getBooks.error )  {
             const commanBooks = getBooks.map( item => {
+                if(item.imageLinks === undefined){
+                    item.imageLinks = { thumbnail: "" }
+                }
                 books.map( book => {
-                    if(item.id === book.id){
+                    if( item.id === book.id ){
                         item.shelf = book.shelf;
                     }
+                    return book;
                 })
                 return item
             })
-            setFoundBooks(commanBooks)
+            setFoundBooks( commanBooks ) 
         }
     }
 
