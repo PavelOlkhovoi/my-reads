@@ -7,13 +7,24 @@ import Book from "./Book";
 const Search = ({ books, bookUpdate, addNewBook }) => {
     const [foundBooks, setFoundBooks] = useState([]);
 
+    const debounce = ( cb, time ) => {
+        let timeout;
+        return function() {
+            const cbCall = () => { cb.apply(this, arguments )}
+            clearTimeout(timeout);
+            timeout = setTimeout(cbCall, time)
+        }
+    }
+
     const searchBooks = async (e) => {
         let words = e.target.value;
-        if( words === undefined || words =="" ){ return false } 
+        if( words === undefined || words === "" ){ return false } 
 
         const getBooks = await search(words, 30)
+        console.log("Searched", getBooks)
 
         if(!getBooks.error) {
+            console.log("Searched before maping", getBooks)
             const commanBooks = getBooks.map( item => {
                 books.map( book => {
                     if(item.id === book.id){
@@ -26,11 +37,13 @@ const Search = ({ books, bookUpdate, addNewBook }) => {
         }
     }
 
+    const searchBooksDebounce = debounce(searchBooks, 500)
+
     return (
     <div className="search-books">
         <div className="search-books-bar">
             <Link to="/" className="close-search">Close</Link>
-            <InputField searchBooks={searchBooks}/>
+            <InputField searchBooks={searchBooksDebounce}/>
         </div>
         <div className="search-books-results">
             <ol className="books-grid">
