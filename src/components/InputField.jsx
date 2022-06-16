@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const InputField = ({ searchBooks })=> {
     return (
         <div className="search-books-input-wrapper">
@@ -9,5 +11,10 @@ const InputField = ({ searchBooks })=> {
       </div>
     )
 }
+
+InputField.prototype = {
+  searchBooks: PropTypes.func.isRequired,
+}
+
 
 export default InputField;

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import ChangeCategory from "./ChangeCategory ";
 const Book = ({ book, bookUpdate, addNewBook, place, books }) => {
 
@@ -21,5 +22,13 @@ const Book = ({ book, bookUpdate, addNewBook, place, books }) => {
       </div>
     )
 }
+
+Book.prototype = {
+  book: PropTypes.object.isRequired,
+  addNewBook: PropTypes.func.isRequired,
+  place: PropTypes.string.isRequired,
+  books: PropTypes.array.isRequired,
+}
+
 
 export default Book;

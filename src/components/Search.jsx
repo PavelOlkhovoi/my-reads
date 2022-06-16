@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import InputField from "./InputField";
@@ -5,29 +6,44 @@ import { search } from "../BooksAPI"
 import Book from "./Book";
 
 const Search = ({ books, addNewBook }) => {
+    // Set the array for searching data 
     const [foundBooks, setFoundBooks] = useState([]);
 
+    /**
+    * @description Helps to launch functions with a delay
+    * @param {function} cd Callback function
+    * @param {number} time - Delay
+    * @return {function}
+    */
     const debounce = ( cb, time ) => {
         let timeout;
         return function() {
-            const cbCall = () => { cb.apply(this, arguments )}
+            // Save arguments for the called function. like an event for example. 
+            const cbCall = () => { cb.apply( this, arguments )}
             clearTimeout(timeout);
             timeout = setTimeout(cbCall, time)
         }
     }
-
+    /**
+    * @description Get data from API with the searching stroke
+    * @param {event} e Event data
+    */
     const searchBooks = async (e) => {
         let words = e.target.value;
         if( words === undefined || words === "" ){ return false } 
 
-        const getBooks = await search( words, 4 )
+        const getBooks = await search( words, 20 )
 
         if( !getBooks.error )  {
+            // loop over the getBooks
             const commanBooks = getBooks.map( item => {
+                // If an array doesn't contain the imageLinks key set up it like ""
                 if(item.imageLinks === undefined){
                     item.imageLinks = { thumbnail: "" }
                 }
+                // loop over the books
                 books.map( book => {
+                    // If a book has already been added to the shelf, write the current shelf
                     if( item.id === book.id ){
                         item.shelf = book.shelf;
                     }
@@ -39,6 +55,7 @@ const Search = ({ books, addNewBook }) => {
         }
     }
 
+    // Invoke the debounce function with the searchBooks
     const searchBooksDebounce = debounce(searchBooks, 500)
 
     return (
@@ -57,5 +74,11 @@ const Search = ({ books, addNewBook }) => {
     </div>
     )
 }
+
+Search.prototype = {
+    books: PropTypes.array.isRequired,
+    addNewBook: PropTypes.func.isRequired,
+}
+
 
 export default Search;
