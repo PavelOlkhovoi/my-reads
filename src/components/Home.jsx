@@ -1,7 +1,8 @@
+import PropTypes from "prop-types";
 import Shelves from "./Shelves.jsx";
 import AddBook from "./AddBook.jsx";
 
-const Home = ({books, bookUpdate, addNewBook, additional})=> {
+const Home = ({books, bookUpdate})=> {
     return (
         <div className="App">
             <div className="list-books">
@@ -15,6 +16,11 @@ const Home = ({books, bookUpdate, addNewBook, additional})=> {
             </div>
         </div>
     )
+}
+
+Home.prototype = {
+    books: PropTypes.array.isRequired,
+    bookUpdate: PropTypes.func.isRequired,
 }
 
 export default Home;
