@@ -19,33 +19,41 @@ function App() {
     setBooks( data )
   }, [])
 
+  const addBookTest = (newBook, shelf) => {
+
+    setBooks(books.map( book => {
+      if(book.id === book.id) {
+        return {
+          ...book, 
+          shelf
+        }
+      }
+    }))
+
+
+  }
+
 
   useEffect(()=> {
     getAllBooks();
   }, [getAllBooks])
 
-/**
-* @description Changes the shelf in the book
-* @param {object} book The book
-* @param {string} shelf - The shelf: "wantToRead", "currentlyReading", "read".
-*/
-  const bookUpdate = async(book, shelf) => {
-    await update(book, shelf);
-    getAllBooks();
-  }
 
 /**
 * @description Add books from the search page to the main
 * @param {object} book The book
 */
-  const addNewBook = (newBook) => {
-    setBooks( prev => [...prev, newBook])
+  const addNewBook = (newBook, shelf) => {
+    setBooks( prev => [...prev, {
+      ...newBook,
+      shelf
+    }])
   }
   return (
     <div>
         <Routes>
-          <Route path="/" element={<Home books={books} bookUpdate={bookUpdate} addNewBook={addNewBook}/>} />
-          <Route path="/search" element={<Search books={books} bookUpdate={bookUpdate} addNewBook={addNewBook} place={"search"}/>} />
+          <Route path="/" element={<Home books={books} addNewBook={addNewBook}/>} />
+          <Route path="/search" element={<Search books={books} addNewBook={addNewBook}/>} />
         </Routes>
     </div>
   );

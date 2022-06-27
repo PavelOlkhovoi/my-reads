@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import ChangeCategory from "./ChangeCategory ";
-const Book = ({ book, bookUpdate, addNewBook, place, books }) => {
+const Book = ({ book, addNewBook }) => {
 
     return (
         <div className="book">
@@ -15,19 +15,12 @@ const Book = ({ book, bookUpdate, addNewBook, place, books }) => {
             }}
           ></div>
 
-        <ChangeCategory bookUpdate={bookUpdate} book={book} addNewBook={addNewBook} place={place} books={books}/>
+        <ChangeCategory book={book} addNewBook={addNewBook} />
         </div>
         <div className="book-title">{book.title}</div>
         <div className="book-authors">{book.authors}</div>
       </div>
     )
-}
-
-Book.prototype = {
-  book: PropTypes.object.isRequired,
-  addNewBook: PropTypes.func.isRequired,
-  place: PropTypes.string.isRequired,
-  books: PropTypes.array.isRequired,
 }
 
 
