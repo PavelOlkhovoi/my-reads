@@ -62,10 +62,13 @@ function App() {
         ...newBook,
         shelf
       }])
+
     }else {
       changeCategory(newBook, shelf)
+      update(newBook, shelf)
     }
 
+    console.log('Finish')
 
   }
   return (
