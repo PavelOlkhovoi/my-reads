@@ -14,7 +14,10 @@ const Search = ({ books, addNewBook,  changeCategory={changeCategory} }) => {
     */
  const searchBooks = async (e) => {
     let words = e.target.value;
-    if( words === undefined || words === "" ){ return false } 
+    if( words === undefined || words === "" ){ 
+        setFoundBooks([]) 
+        return false 
+    } 
 
     const getBooks = await search( words, 20 )
 
