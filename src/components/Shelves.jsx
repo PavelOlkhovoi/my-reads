@@ -4,7 +4,7 @@ import Book from "./Book";
 const Shelves = ({books, addNewBook}) => {
     // Create objects to identify and show shelves with proper names
     const shelves = [{shelf:"wantToRead", display: "Want to read"}, {shelf: "currentlyReading", display: "Currently reading"}, {shelf:"read", display: "Read"}]
-    console.log(books)
+
     return (
             <div className="list-books-content">
                 <div className="bookshelf">
@@ -16,7 +16,7 @@ const Shelves = ({books, addNewBook}) => {
                                 <ol className="books-grid">
                                 {/* loop over the books */}
                                 { books.map((book) => (
-                                    shelf.shelf === book.shelf ? <li key={book.id}><Book book={book} 
+                                    shelf.shelf === book.shelf ? <li key={book.id}><Book books={books} book={book} 
                                     addNewBook={addNewBook}/></li> : ""
                                 )) }
                                 </ol>

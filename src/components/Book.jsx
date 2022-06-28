@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import ChangeCategory from "./ChangeCategory ";
-const Book = ({ book, addNewBook }) => {
+const Book = ({books, book, addNewBook, changeCategory }) => {
 
     return (
         <div className="book">
@@ -15,7 +15,7 @@ const Book = ({ book, addNewBook }) => {
             }}
           ></div>
 
-        <ChangeCategory book={book} addNewBook={addNewBook} />
+        <ChangeCategory books={books} book={book} addNewBook={addNewBook} changeCategory={changeCategory} />
         </div>
         <div className="book-title">{book.title}</div>
         <div className="book-authors">{book.authors}</div>

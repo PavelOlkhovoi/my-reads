@@ -10,7 +10,7 @@ const Home = ({books, addNewBook})=> {
                     <h1>MyReads</h1>
                 </div>
                 <div className="list-books-content">
-                    <Shelves books={books}/>
+                    <Shelves books={books} addNewBook={addNewBook}/>
                     <AddBook />
                 </div>
             </div>

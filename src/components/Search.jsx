@@ -5,7 +5,7 @@ import InputField from "./InputField";
 import { search } from "../BooksAPI"
 import Book from "./Book";
 
-const Search = ({ books, addNewBook }) => {
+const Search = ({ books, addNewBook,  changeCategory={changeCategory} }) => {
     // Set the array for searching data 
     const [foundBooks, setFoundBooks] = useState([]);
 /**
@@ -30,6 +30,7 @@ const Search = ({ books, addNewBook }) => {
         })
         setFoundBooks( commanBooks ) 
     }
+
 }
 
 
@@ -42,7 +43,10 @@ const Search = ({ books, addNewBook }) => {
         <div className="search-books-results">
             <ol className="books-grid">
                 {
-                    foundBooks.map( book => <li key={book.id}><Book book={book} addNewBook={addNewBook}/></li>)
+                    foundBooks.map( book => <li key={book.id}><Book book={book} addNewBook={addNewBook}
+                        changeCategory={changeCategory}
+                        books={books}
+                    /></li>)
                 }
             </ol>
         </div>
