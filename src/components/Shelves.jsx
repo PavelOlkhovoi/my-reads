@@ -6,29 +6,33 @@ const Shelves = ({books, addNewBook}) => {
     const shelves = [{shelf:"wantToRead", display: "Want to read"}, {shelf: "currentlyReading", display: "Currently reading"}, {shelf:"read", display: "Read"}]
 
     return (
-            <div className="list-books-content">
-                <div className="bookshelf">
-                    {/* loop over the shelves */}
-                    {shelves.map((shelf, index) => (
-                        <div key={index}>
-                            <h2 className="bookshelf-title">{shelf.display}</h2>
-                            <div className="bookshelf-books">
-                                <ol className="books-grid">
-                                {/* loop over the books */}
-                                { books.map((book) => (
-                                    shelf.shelf === book.shelf ? <li key={book.id}><Book books={books} book={book} 
-                                    addNewBook={addNewBook}/></li> : ""
-                                )) }
-                                </ol>
-                            </div>
+        <div className="list-books-content">
+            <div className="bookshelf">
+                {/* loop over the shelves */}
+                {shelves.map((shelf, index) => (
+                    <div key={index}>
+                        {/* Show name a shelf */}
+                        <h2 className="bookshelf-title">{shelf.display}</h2>
+                        <div className="bookshelf-books">
+                            <ol className="books-grid">
+                            {/* loop over the books */}
+                            { books.map((book) => (
+                                shelf.shelf === book.shelf ? <li key={book.id}><Book books={books} book={book} 
+                                addNewBook={addNewBook}/></li> : ""
+                            )) }
+                            </ol>
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
+        </div>
     )
 }
 
-
+Shelves.prototype = {
+    books: PropTypes.array.isRequired,
+    addNewBook: PropTypes.func.isRequired,
+}
 
 export default Shelves;
 

@@ -4,16 +4,16 @@ const Book = ({books, book, addNewBook, changeCategory }) => {
 
     return (
         <div className="book">
-        <div className="book-top">
-          <div
-            className="book-cover"
-            style={{
-              width: 128,
-              height: 188,
-              backgroundImage:
-                `url(${book.imageLinks.thumbnail})`,
-            }}
-          ></div>
+          <div className="book-top">
+            <div
+              className="book-cover"
+              style={{
+                width: 128,
+                height: 188,
+                backgroundImage:
+                  `url(${book.imageLinks.thumbnail})`,
+              }}
+            ></div>
 
         <ChangeCategory books={books} book={book} addNewBook={addNewBook} changeCategory={changeCategory} />
         </div>
@@ -23,5 +23,11 @@ const Book = ({books, book, addNewBook, changeCategory }) => {
     )
 }
 
+Book.prototype = {
+  book: PropTypes.object.isRequired,
+  addNewBook: PropTypes.func.isRequired,
+  books: PropTypes.array.isRequired,
+  changeCategory: PropTypes.func.isRequired,
+}
 
 export default Book;

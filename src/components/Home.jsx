@@ -18,4 +18,9 @@ const Home = ({books, addNewBook})=> {
     )
 }
 
+Home.prototype = {
+    books: PropTypes.array.isRequired,
+    addNewBook: PropTypes.func.isRequired,
+}
+
 export default Home;
