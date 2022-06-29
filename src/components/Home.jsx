@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import Shelves from "./Shelves.jsx";
 import AddBook from "./AddBook.jsx";
 
-const Home = ({books, addNewBook})=> {
+const Home = ({books, changeCategory})=> {
     return (
         <div className="App">
             <div className="list-books">
@@ -10,7 +10,7 @@ const Home = ({books, addNewBook})=> {
                     <h1>MyReads</h1>
                 </div>
                 <div className="list-books-content">
-                    <Shelves books={books} addNewBook={addNewBook}/>
+                    <Shelves books={books} changeCategory={changeCategory}/>
                     <AddBook />
                 </div>
             </div>
@@ -20,7 +20,7 @@ const Home = ({books, addNewBook})=> {
 
 Home.prototype = {
     books: PropTypes.array.isRequired,
-    addNewBook: PropTypes.func.isRequired,
+    changeCategory: PropTypes.func.isRequired,
 }
 
 export default Home;

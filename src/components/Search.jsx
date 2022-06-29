@@ -5,7 +5,7 @@ import InputField from "./InputField";
 import { search } from "../BooksAPI"
 import Book from "./Book";
 
-const Search = ({books, addNewBook, changeCategory}) => {
+const Search = ({books, changeCategory}) => {
     
     // Set the array for searching data 
     const [foundBooks, setFoundBooks] = useState([]);
@@ -18,7 +18,6 @@ const Search = ({books, addNewBook, changeCategory}) => {
     */
     const debounce = ( cb, time ) => {
     let timeout;
-    console.log('Debounce')
     return function() {
         // Save arguments for the called function. like an event for example. 
         const cbCall = () => { cb.apply( this, arguments )}
@@ -68,9 +67,7 @@ return (
         <div className="search-books-results">
             <ol className="books-grid">
                 {
-                    foundBooks.map( book => <li key={book.id}><Book book={book} addNewBook={addNewBook}
-                        changeCategory={changeCategory}
-                        books={books}
+                    foundBooks.map( book => <li key={book.id}><Book book={book} changeCategory={changeCategory} books={books}
                     /></li>)
                 }
             </ol>
@@ -81,7 +78,6 @@ return (
 
 Search.prototype = {
     books: PropTypes.array.isRequired,
-    addNewBook: PropTypes.func.isRequired,
     changeCategory: PropTypes.func.isRequired,
 }
 

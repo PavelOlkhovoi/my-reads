@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import Book from "./Book";
 
-const Shelves = ({books, addNewBook}) => {
+const Shelves = ({books, changeCategory}) => {
     // Create objects to identify and show shelves with proper names
     const shelves = [{shelf:"wantToRead", display: "Want to read"}, {shelf: "currentlyReading", display: "Currently reading"}, {shelf:"read", display: "Read"}]
 
@@ -18,7 +18,7 @@ const Shelves = ({books, addNewBook}) => {
                             {/* loop over the books */}
                             { books.map((book) => (
                                 shelf.shelf === book.shelf ? <li key={book.id}><Book books={books} book={book} 
-                                addNewBook={addNewBook}/></li> : ""
+                                changeCategory={changeCategory}/></li> : ""
                             )) }
                             </ol>
                         </div>
@@ -31,7 +31,7 @@ const Shelves = ({books, addNewBook}) => {
 
 Shelves.prototype = {
     books: PropTypes.array.isRequired,
-    addNewBook: PropTypes.func.isRequired,
+    changeCategory: PropTypes.func.isRequired,
 }
 
 export default Shelves;

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-const ChangeCategory = ({book, addNewBook, books}) => {
+const ChangeCategory = ({book, books, changeCategory}) => {
 
   /**
   * @description Checks books status and sets up the proper shelf inside the select tag
@@ -43,7 +43,7 @@ const ChangeCategory = ({book, addNewBook, books}) => {
         return false
       }else {
         const shelf = event.target.value
-        addNewBook(book, shelf)
+        changeCategory(book, shelf)
         setFirstClick(false)
       }
 
@@ -66,8 +66,8 @@ const ChangeCategory = ({book, addNewBook, books}) => {
 
 ChangeCategory.prototype = {
   book: PropTypes.object.isRequired,
-  addNewBook: PropTypes.func.isRequired,
   books: PropTypes.array.isRequired,
+  changeCategory: PropTypes.func.isRequired,
 }
 
 export default ChangeCategory;
