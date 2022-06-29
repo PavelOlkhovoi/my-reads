@@ -30,28 +30,19 @@ const ChangeCategory = ({book, books, changeCategory}) => {
   }
 
   const [ifShelf, setIfShelf] = useState(()=> book.shelf ? book.shelf : checkShelf())
-  const [firstCLick, setFirstClick] = useState(false)
 
     /**
     * @description Change shelves
     * @param {event} event The value of search's inputs
     */
     const shelfUpdate = (event) => {
-      // The first click skips the first event
-      if(!firstCLick){
-        setFirstClick(true)
-        return false
-      }else {
-        const shelf = event.target.value
-        changeCategory(book, shelf)
-        setFirstClick(false)
-      }
-
+      const shelf = event.target.value
+      changeCategory(book, shelf)
     }
 
   return (
     <div className="book-shelf-changer">
-      <select defaultValue={ ifShelf } onClick={ shelfUpdate }>
+      <select defaultValue={ ifShelf } onChange={ shelfUpdate }>
           <option disabled>
             Move to...
           </option>
