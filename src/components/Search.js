@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import InputField from "./InputField";
+import InputField from "./InputField.js";
 import { search } from "../BooksAPI"
-import Book from "./Book";
+import Book from "./Book.js";
 
 const Search = ({books, changeCategory}) => {
     

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import ChangeCategory from "./ChangeCategory ";
-const Book = ({books, book, changeCategory }) => {
+import ChangeCategory from "./ChangeCategory";
+const Book = ({books, book, changeCategory}) => {
 
     return (
         <div className="book">

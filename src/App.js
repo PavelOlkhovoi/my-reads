@@ -2,8 +2,8 @@ import { useState, useEffect, useCallback } from "react";
 import { Routes, Route} from "react-router-dom";
 import { getAll, update } from "./BooksAPI"
 import "./App.css";
-import Home from "./components/Home.jsx";
-import Search from "./components/Search";
+import Home from "./components/Home";
+import Search from "./components/Search.js";
 
 
 function App() {

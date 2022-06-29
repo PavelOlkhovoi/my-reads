@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import Book from "./Book";
+import Book from "./Book.js";
 
 const Shelves = ({books, changeCategory}) => {
     // Create objects to identify and show shelves with proper names

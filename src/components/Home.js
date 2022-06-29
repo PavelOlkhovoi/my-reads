@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import Shelves from "./Shelves.jsx";
-import AddBook from "./AddBook.jsx";
+import Shelves from "./Shelves";
+import AddBook from "./AddBook";
 
 const Home = ({books, changeCategory})=> {
     return (
